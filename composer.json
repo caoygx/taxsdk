@@ -1,0 +1,41 @@
+{
+    "name": "rrbrr/user",
+    "keywords": ["thinkphp", "casbin", "permission", "access-control", "authorization", "rbac", "acl", "abac", "authz"],
+    "description": "An authorization library that supports access control models like ACL, RBAC, ABAC in ThinkPHP 6. ",
+    "authors": [
+        {
+            "name": "caoygx",
+            "email": "caoygx@qq.com"
+        }
+    ],
+    "license": "Apache-2.0",
+    "require": {
+    	"topthink/framework": "6.0.x",
+        "topthink/think-migration": "^3.0"
+    },
+    "require-dev": {
+        "topthink/think": "6.0.x"
+    },
+    "autoload": {
+        "psr-4": {
+            "mapp\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+          "user\\tests\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "extra": {
+        "think": {
+            "services": [
+                "mapp\\AdminService"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
