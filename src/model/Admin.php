@@ -1,6 +1,6 @@
 <?php
 
-namespace mapp\model;
+namespace madmin\model;
 
 use think\Model;
 use think\contract\Arrayable;
@@ -8,7 +8,7 @@ use think\contract\Arrayable;
 /**
  * Rule Model
  */
-class User extends Model implements Arrayable
+class Admin extends Model implements Arrayable
 {
 
     public function setPasswordAttr($value)

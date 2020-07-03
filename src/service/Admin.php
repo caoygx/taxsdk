@@ -1,7 +1,7 @@
 <?php
 
 namespace mapp\service;
-class User
+class Admin
 {
     /**
      * 手机登录验证码登录

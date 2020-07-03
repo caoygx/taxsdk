@@ -29,9 +29,9 @@ return [
             'database' => [
                 // 数据库连接名称，不填为默认配置.
                 'connection' => '',
-                'table_name' => 'user', //用户名表
+                'table_name' => 'admin', //用户名表
             ],
         ],
     ],
-    'template_root_dir' => "../../vendor/rrbrr/user/src/user/view" //模板根目录
+    'template_root_dir' => "../../vendor/rrbrr/admin/src/admin/view" //模板根目录
 ];

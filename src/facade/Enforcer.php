@@ -1,6 +1,6 @@
 <?php
 
-namespace mapp\facade;
+namespace madmin\facade;
 
 use think\Facade;
 

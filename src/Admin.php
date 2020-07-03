@@ -1,6 +1,6 @@
 <?php
 
-namespace mapp\user\controller;
+namespace madmin\controller;
 
 
 use think\exception\ValidateException;

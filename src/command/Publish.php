@@ -1,6 +1,6 @@
 <?php
 
-namespace mapp\command;
+namespace madmin\command;
 
 use think\console\Command;
 use think\console\Input;
@@ -16,7 +16,7 @@ class Publish extends Command
      */
     protected function configure()
     {
-        $this->setName('user:publish')->setDescription('Publish User');
+        $this->setName('admin:publish')->setDescription('Publish admin');
     }
 
     /**
@@ -44,8 +44,8 @@ class Publish extends Command
             }
         }
 
-        if (!file_exists(config_path().'user.php')) {
-            copy(__DIR__.'/../../config/user.php', config_path().'user.php');
+        if (!file_exists(config_path().'admin.php')) {
+            copy(__DIR__.'/../../config/admin.php', config_path().'admin.php');
         }
     }
 }

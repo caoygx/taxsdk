@@ -1,6 +1,6 @@
 <?php
 
-namespace mapp\adapter;
+namespace madmin\adapter;
 
 
 class DatabaseAdapter

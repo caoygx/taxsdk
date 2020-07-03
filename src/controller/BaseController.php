@@ -2,7 +2,7 @@
 
 declare (strict_types=1);
 
-namespace mapp\user\controller;
+namespace madmin\controller;
 
 use Cgf\Cgf;
 use think\App;

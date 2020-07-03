@@ -1,5 +1,5 @@
 <?php
-namespace mapp;
+namespace madmin;
 
 use think\Service;
 use mapp\command\Publish;
