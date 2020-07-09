@@ -4,7 +4,7 @@ namespace mapp\validate;
 
 use think\Validate;
 
-class Admin extends Validate
+class News extends Validate
 {
     /**
      * 定义验证规则

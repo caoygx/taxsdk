@@ -1,7 +1,7 @@
 <?php
 
 namespace mapp\service;
-class Admin
+class News
 {
     /**
      * 手机登录验证码登录

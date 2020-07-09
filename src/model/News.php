@@ -8,7 +8,7 @@ use think\contract\Arrayable;
 /**
  * Rule Model
  */
-class Admin extends Model implements Arrayable
+class News extends Model implements Arrayable
 {
 
     public function setPasswordAttr($value)

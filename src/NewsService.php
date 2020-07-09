@@ -9,7 +9,7 @@ use mapp\command\Publish;
  * 
  * @author techlee@qq.com
  */
-class AdminService extends Service
+class NewsService extends Service
 {
     /**
      * Register service

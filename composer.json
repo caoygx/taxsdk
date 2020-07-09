@@ -1,6 +1,6 @@
 {
-    "name": "rrbrr/admin",
-    "keywords": ["thinkphp", "casbin", "permission", "access-control", "authorization", "rbac", "acl", "abac", "authz"],
+    "name": "rrbrr/mnews",
+    "keywords": ["thinkphp", "news"],
     "description": "An authorization library that supports access control models like ACL, RBAC, ABAC in ThinkPHP 6. ",
     "authors": [
         {
@@ -18,12 +18,12 @@
     },
     "autoload": {
         "psr-4": {
-            "madmin\\": "src/"
+            "mnews\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-          "admin\\tests\\": "tests/"
+          "mnews\\tests\\": "tests/"
         }
     },
     "config": {
@@ -32,8 +32,11 @@
     "extra": {
         "think": {
             "services": [
-                "madmin\\AdminService"
-            ]
+                "mnews\\NewsService"
+            ],
+            "config": {
+                "mnews": "config/config.php"
+            }
         }
     },
     "minimum-stability": "dev",

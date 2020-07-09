@@ -5,7 +5,7 @@ namespace madmin\controller;
 
 use think\exception\ValidateException;
 
-class Admin extends BaseController
+class News extends BaseController
 {
     function initialize(){
         $this->m = new \mapp\model\Admin();

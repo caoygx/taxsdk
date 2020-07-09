@@ -5,10 +5,10 @@ namespace madmin\controller;
 
 use think\exception\ValidateException;
 
-class Admin extends BaseController
+class News extends BaseController
 {
     function initialize(){
-        $this->m = new \mapp\model\Admin();
+        $this->m = new \mapp\model\News();
     }
 
 
@@ -20,7 +20,7 @@ class Admin extends BaseController
 
         try {
             $data = input();
-            validate('mapp\validate\Admin')->check($data);
+            validate('mapp\validate\News')->check($data);
             $this->m->save($data);
             $id = $this->m->id;
             $this->assign('id', $id);
