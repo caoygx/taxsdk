@@ -1,6 +1,6 @@
 <?php
 
-namespace madmin\model;
+namespace mnews\model;
 
 use think\Model;
 use think\contract\Arrayable;

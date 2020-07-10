@@ -1,5 +1,5 @@
 <?php
-namespace madmin;
+namespace mnews;
 
 use think\Service;
 use mapp\command\Publish;
@@ -24,6 +24,9 @@ class NewsService extends Service
         $this->app->bind('adminModel', function () {
             return "adminModel";
         });
+
+        $this->registerRoutePath();
+        //$this->app->make('routePath')->loadRouterFrom($this->loadRouteFrom());
     }
 
     /**
@@ -49,5 +52,28 @@ class NewsService extends Service
         $config = $this->app->config->get($key, []);
 
         $this->app->config->set(array_merge(require $path, $config), $key);
+    }
+
+    /**
+     * 注册路由地址
+     *
+     * @time 2020年06月23日
+     * @return void
+     */
+    protected function registerRoutePath()
+    {
+        $this->app->instance('routePath', new class {
+            protected $path = [];
+            public function loadRouterFrom($path)
+            {
+                $this->path[] = $path;
+                return $this;
+            }
+            public function get()
+            {
+                $this->path[] = __DIR__ . DIRECTORY_SEPARATOR . 'route.php';
+                return $this->path;
+            }
+        });
     }
 }

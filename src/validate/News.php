@@ -1,6 +1,6 @@
 <?php
 
-namespace mapp\validate;
+namespace mnews\validate;
 
 use think\Validate;
 

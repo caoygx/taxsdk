@@ -1,21 +1,21 @@
 <?php
 
-namespace madmin\controller;
-
+namespace mnews\controller;
 
 use think\exception\ValidateException;
-
+use Cgf\Framework\Thinkphp\BaseController;
 class News extends BaseController
 {
     function initialize(){
-        $this->m = new \mapp\model\Admin();
+        parent::initialize();
+        $this->m = new \mnews\model\News();
     }
 
 
     /**
      * 手机登录验证码登录
      */
-    function add($params)
+    function addnews($params)
     {
 
         try {

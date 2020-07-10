@@ -1,6 +1,6 @@
 <?php
 
-namespace mapp\service;
+namespace mnews\service;
 class News
 {
     /**
