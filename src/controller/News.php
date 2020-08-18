@@ -10,14 +10,15 @@ class News extends BaseController
         parent::initialize();
         $this->m = new \mnews\model\News();
     }
-
+    function getModelDir(){
+        return "\\mnews\\model";
+    }
 
     /**
      * 手机登录验证码登录
      */
     function addnews($params)
     {
-
         try {
             $data = input();
             validate('mapp\validate\Admin')->check($data);
@@ -28,7 +29,6 @@ class News extends BaseController
         } catch (ValidateException $e) {
             return $this->error($e->getError());
         }
-
     }
 
     /**
