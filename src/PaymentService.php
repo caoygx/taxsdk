@@ -1,5 +1,5 @@
 <?php
-namespace mnews;
+namespace mpayment;
 
 use think\Service;
 use mapp\command\Publish;

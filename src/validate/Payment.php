@@ -1,10 +1,10 @@
 <?php
 
-namespace mnews\validate;
+namespace mpayment\validate;
 
 use think\Validate;
 
-class News extends Validate
+class Payment extends Validate
 {
     /**
      * 定义验证规则

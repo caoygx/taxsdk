@@ -1,7 +1,7 @@
 {
-    "name": "rrbrr/mnews",
-    "keywords": ["thinkphp", "news"],
-    "description": "An authorization library that supports access control models like ACL, RBAC, ABAC in ThinkPHP 6. ",
+    "name": "rrbrr/mpayment",
+    "keywords": ["thinkphp", "pay"],
+    "description": "",
     "authors": [
         {
             "name": "caoygx",
@@ -18,12 +18,12 @@
     },
     "autoload": {
         "psr-4": {
-            "mnews\\": "src/"
+            "mpayment\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-          "mnews\\tests\\": "tests/"
+          "mpayment\\tests\\": "tests/"
         }
     },
     "config": {
@@ -32,10 +32,10 @@
     "extra": {
         "think": {
             "services": [
-                "mnews\\NewsService"
+                "mpayment\\NewsService"
             ],
             "config": {
-                "mnews": "config/config.php"
+                "mpayment": "config/config.php"
             }
         }
     },

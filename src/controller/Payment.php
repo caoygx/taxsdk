@@ -1,17 +1,17 @@
 <?php
 
-namespace mnews\controller;
+namespace mpayment\controller;
 
 use think\exception\ValidateException;
 use Cgf\Framework\Thinkphp\BaseController;
-class News extends BaseController
+class Payment extends BaseController
 {
     function initialize(){
         parent::initialize();
-        $this->m = new \mnews\model\News();
+        $this->m = new \mpayment\model\Payment();
     }
     function getModelDir(){
-        return "\\mnews\\model";
+        return "\\mpayment\\model";
     }
 
     /**

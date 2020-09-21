@@ -1,6 +1,6 @@
 <?php
 
-namespace mnews\model;
+namespace mpayment\model;
 
 use think\Model;
 use think\contract\Arrayable;
@@ -8,7 +8,7 @@ use think\contract\Arrayable;
 /**
  * Rule Model
  */
-class News extends Model implements Arrayable
+class Payment extends Model implements Arrayable
 {
 
     public function setPasswordAttr($value)

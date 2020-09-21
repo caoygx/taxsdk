@@ -1,7 +1,7 @@
 <?php
 
-namespace mnews\service;
-class News
+namespace mpayment\service;
+class Payment
 {
     /**
      * 手机登录验证码登录
