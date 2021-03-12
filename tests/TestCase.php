@@ -2,77 +2,61 @@
 
 namespace mapp\tests;
 
-use think\App;
 use PHPUnit\Framework\TestCase as BaseTestCase;
-use mapp\UserService;
-use mapp\model\Rule;
+
 
 class TestCase extends BaseTestCase{
 
-    protected $app;
+    protected $publicKey = '-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC7V1Rzu6K7hAj3/5xUCel4g8bH
+WUDXuvVFC6nIQzndAEJSeam9y1BDcoD4jbvRZqjh8EjWoWS6kvmQeSlgJHGOI0EP
+VMyOGokQ0FSJ/jyv8JBYFoQ2KZwRrJjfxy1KI6AdSLScLzzeZsSuZ8SFZnr1Mcrc
+nRBNHLTnwuqGEcB8IwIDAQAB
+-----END PUBLIC KEY-----';
 
-    protected $migrate = true;
+    protected $privateKey = '-----BEGIN RSA PRIVATE KEY-----
+MIICWwIBAAKBgQC7V1Rzu6K7hAj3/5xUCel4g8bHWUDXuvVFC6nIQzndAEJSeam9
+y1BDcoD4jbvRZqjh8EjWoWS6kvmQeSlgJHGOI0EPVMyOGokQ0FSJ/jyv8JBYFoQ2
+KZwRrJjfxy1KI6AdSLScLzzeZsSuZ8SFZnr1McrcnRBNHLTnwuqGEcB8IwIDAQAB
+AoGAWfzA3DatHFV32Wg2t0drli/2M5tzwixT1C6eB0wDZ1zQfr1iA4C9tSgzOzEZ
+nqQpSx4YXsB3mgcvSW5pqXzX7hKtKcss36TNXogr/Rvkn61IiyRqa9ApT8AVQtBi
+qNwBzdYPH7vjH3BbIizN46tdQyW3VT7QEzJ1hEMzz/U860ECQQD2xqSlCnQ1evKn
+okYk2lCulf2JZ0NL3HUVM/m2hNeqhyNGjYgxD3rEVW01bA5qnrn/Or1HFO4uiE7/
+I7d2AOjFAkEAwlf3E8MN2HVWIM3ObAJRlIihW7B/G8V3sU+qnzgEqtg6znT4MGDS
+h1mR7uF4qkVgMNnwLzrJBJz1/GAvqkgPxwJATsAhdpGZeB+eJCTC4avRp4Ux/ZE4
+hpL5wiRuAfLup/qsJS2xUoawFMt2KGAtUZUJogtqr65cO/k/zGfnef7cSQJAIzbT
+M0Z9pMImGA2SoKmO5K4ZJscFUR/nvz4jOXRqDBbgGPbC3ek9XH8TXUiHl7q4YkGr
+LrOlJuvV+qPnHyCtkwJAD85NcVb+LHYl7TaQYQoW7NQHXt9dGdEjAnMdOYsojvme
+wkobojEQ6XSOTswlQprjo6u0UYfwArKHRGq+AkMMag==
+-----END RSA PRIVATE KEY-----';
 
-    public function createApplication(){
+    public function testDecrypt(){
+        $publicKey = $this->publicKey;
+        $privateKey = $this->privateKey;
 
-        // 应用初始化
-        $app = new App(__DIR__.'/../vendor/topthink/think/');        
+        $text = "tax";
+        $security = \taxsdk\security\SecurityHelper::type("rsa")->setPublicKey($publicKey);
+        $ciphertext = $security->encrypt($text);
+        $security = \taxsdk\security\SecurityHelper::type("rsa")->setPrivateKey($privateKey);
+        $decryptText = $security->decrypt($ciphertext); //输出原文 tax
+        $this->assertEquals($text, $decryptText);
 
-        $app->register(UserService::class);
 
-        $app->initialize();
 
-        $app->console->call("user:publish");
-        
-        return $app;
     }
 
-    /**
-     * 初始数据
-     *
-     * @return void
-     */
-    protected function initTable()
-    {
-        Rule::where("1 = 1")->delete(true);
-        Rule::create(['ptype' => 'p', 'v0' => 'alice', 'v1' => 'data1', 'v2' => 'read']);
-        Rule::create(['ptype' => 'p', 'v0' => 'bob', 'v1' => 'data2', 'v2' => 'write']);
-        Rule::create(['ptype' => 'p', 'v0' => 'data2_admin', 'v1' => 'data2', 'v2' => 'read']);
-        Rule::create(['ptype' => 'p', 'v0' => 'data2_admin', 'v1' => 'data2', 'v2' => 'write']);
-        Rule::create(['ptype' => 'g', 'v0' => 'alice', 'v1' => 'data2_admin']);
+    public function testSign(){
+        $publicKey = $this->publicKey;
+        $privateKey = $this->privateKey;
+
+        $security = \taxsdk\security\SecurityHelper::type("rsa")->setPrivateKey($privateKey);
+        $sign = $security->generateSign(['a'=>'b',"sign"=>""]);
+
+        $security = \taxsdk\security\SecurityHelper::type("rsa")->setPublicKey($publicKey);
+        $r = $security->check(['a'=>'b',"sign"=>$sign],$sign);
+        $this->assertTrue($r);
     }
 
-    /**
-     * Refresh the application instance.
-     *
-     * @return void
-     */
-    protected function refreshApplication()
-    {
-        $this->app = $this->createApplication();
-    }
 
-    /**
-     * This method is called before each test.
-     */
-    protected function setUp()/* The :void return type declaration that should be here would cause a BC issue */
-    {
-        if (! $this->app) {
-            $this->refreshApplication();
-        }
 
-        $this->app->console->call("migrate:run");
-
-        $this->initTable();
-    }
-
-    /**
-     * This method is called after each test.
-     */
-    protected function tearDown()/* The :void return type declaration that should be here would cause a BC issue */
-    {
-        if ($this->migrate){
-            $this->app->console->call("migrate:rollback");
-        }
-    }
 }
