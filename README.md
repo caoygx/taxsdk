@@ -35,9 +35,9 @@ var_dump($r); //输出 true
 ```
 
 
-生成私钥
+生成私钥   
 openssl genrsa -out private.key 1024 
  
-生成私钥
+生成私钥  
 openssl rsa -in private.key -pubout -out public.key 
  
