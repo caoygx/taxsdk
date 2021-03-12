@@ -1,6 +1,6 @@
 {
-    "name": "rrbrr/mpayment",
-    "keywords": ["thinkphp", "pay"],
+    "name": "rrbrr/taxsdk",
+    "keywords": ["taxsdk", "pay"],
     "description": "",
     "authors": [
         {
@@ -10,34 +10,26 @@
     ],
     "license": "Apache-2.0",
     "require": {
-    	"topthink/framework": "6.0.x",
-        "topthink/think-migration": "^3.0"
+
     },
     "require-dev": {
-        "topthink/think": "6.0.x"
+       
     },
     "autoload": {
         "psr-4": {
-            "mpayment\\": "src/"
+            "taxsdk\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-          "mpayment\\tests\\": "tests/"
+          "taxsdk\\tests\\": "tests/"
         }
     },
     "config": {
         "preferred-install": "dist"
     },
     "extra": {
-        "think": {
-            "services": [
-                "mpayment\\NewsService"
-            ],
-            "config": {
-                "mpayment": "config/config.php"
-            }
-        }
+      
     },
     "minimum-stability": "dev",
     "prefer-stable": true
